@@ -1,0 +1,15 @@
+version: "3"
+services:
+
+# django application
+  app:
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ./server:/django
+    ports:
+      - 8000:8000
+    image: app:django
+    container_name: server_container
+    command: python3 manage.py runserver 0.0.0.0:8000
